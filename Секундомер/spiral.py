@@ -3,9 +3,9 @@
 from fltk import *
 import math
 
-class Generator:
 
-    __listXY = []       # cписок координат
+class Generator:
+    __listXY = []  # cписок координат
 
     # Конструктор (параметры: расстояние, шаг, точки начала)
     def __init__(self, r, t, x, y):
@@ -20,7 +20,7 @@ class Generator:
 
     # Функция вычисления координат спирали
     def GenerateCoos(self):
-        step = math.radians(360/self.__t)*(self.__t/-4)+math.radians(360/self.__t)
+        step = math.radians(360 / self.__t) * (self.__t / -4) + math.radians(360 / self.__t)
         _i = 0
         if (len(self.__listXY) > 0):
             self.__listXY.clear()
@@ -29,7 +29,5 @@ class Generator:
             x = self.__x + self.__r * math.cos(step)
             y = self.__y + self.__r * math.sin(step)
             self.__listXY.append((math.ceil(x), math.ceil(y)))
-            step += math.radians(360/self.__t) 
+            step += math.radians(360 / self.__t)
             _i += 1
-    
-    
