@@ -2,7 +2,6 @@
 from fltk import *
 from spiral import Generator
 from window import Window
-from sys import *
 
 
 # [<G>] Глобальные переменные
