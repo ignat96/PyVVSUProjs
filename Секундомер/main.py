@@ -10,7 +10,9 @@ _H = 600  # - Высота окна
 _W = 800  # - Ширина окна
 _r = 160  # - радиус окружности
 _t = 60  # - точек на окружности
-tick = 0
+tick = 0.00
+_sec = -1
+_min = 0
 _boxSizes = (20, 20)  # - размер кнопки (по умолчанию)
 buttons_secs = []  # - список кнопок спирали
 buttons_mins = []
@@ -44,13 +46,15 @@ def generate_btns():
 
 # [<C>] Обработка событий
 def timer_cb():
-    global _t, tick
+    global _t, tick, _sec, _min
 
-    if tick > 0:
-        buttons_secs[(tick-1) % 60].value(0)
+    if _sec < int(tick):
+        _sec = int(tick)
+        if _sec > 0:
+            buttons_secs[(_sec-1) % 60].value(0)
+        buttons_secs[_sec % 60].value(1)
 
-    buttons_secs[tick % 60].value(1)
-    print('Time is {0}'.format(tick))
+
     tick += 0.01
     Fl.repeat_timeout(0.01, timer_cb)
 
@@ -64,7 +68,7 @@ def main():
         MainWindow.add(item1)
     for item in buttons_secs:
         MainWindow.add(item)
-    Fl.add_timeout(1.0, timer_cb)
+    Fl.add_timeout(0.01, timer_cb)
 
     # Запуск графической оболочки
     Fl.run()
