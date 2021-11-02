@@ -20,7 +20,7 @@ class Generator:
 
     # Функция вычисления координат спирали
     def GenerateCoos(self):
-        step = math.radians(360 / self.__t) * (self.__t / -4) + math.radians(360 / self.__t)
+        step = math.radians(360 / self.__t) * (self.__t / -4)
         _i = 0
         if (len(self.__listXY) > 0):
             self.__listXY.clear()
