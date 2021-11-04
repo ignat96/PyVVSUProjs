@@ -21,15 +21,16 @@ class Generator:
 
     # Функция вычисления координат спирали
     def GenerateCoos(self):
-        step = 0
+        k = self.__h/(2*math.pi)
         _i = 0
-        if (len(self.__listXY) > 0):
+        fstep = 12 * (2*math.pi)
+        if len(self.__listXY) > 0:
             self.__listXY.clear()
 
-        while (_i < self.__spLength):
-            x = self.__x - (self.__h * step * math.sin(step))
-            y = self.__y + (self.__h * step * math.cos(step))
-            self.__listXY.append((math.ceil(x), math.ceil(y)))
-            step += self.__t
-            _i += 1
+        while _i < fstep:
+            p = k * _i
+            x = p * math.cos(_i)
+            y = p * math.sin(_i)
+            self.__listXY.append((math.ceil(x+self.__x), math.ceil(y+self.__y)))
+            _i += self.__t
     
