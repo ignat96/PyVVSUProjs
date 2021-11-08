@@ -16,14 +16,14 @@ class Generator:
         self.__y = y
 
     # Получение списка коорданит из класса
-    def GetXYList(self):
+    def get_xy_list(self):
         return self.__listXY
 
     # Функция вычисления координат спирали
-    def GenerateCoos(self):
+    def calculate_xy(self):
         k = self.__h/(2*math.pi)
         _i = 0
-        fstep = 12 * (2*math.pi)
+        fstep = 4 * (2*math.pi)
         if len(self.__listXY) > 0:
             self.__listXY.clear()
 
